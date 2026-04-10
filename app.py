@@ -1,20 +1,5 @@
-import os
-import sys
-import subprocess
-import streamlit as st
-
-# ================= 0. 暴力修复环境 =================
-# 在读取任何表格之前，先强行确认 openpyxl 是否存在，没有就当场下载！
-try:
-    import openpyxl
-except ImportError:
-    st.warning("🔄 正在为服务器强制安装 Excel 解析插件，请等待大约 10 秒钟...")
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "openpyxl"])
-    st.success("✅ 插件安装成功！页面即将自动刷新...")
-    st.rerun()  # 安装完后立刻强制刷新网页
-
-# ================= 1. 下面才是正常的业务代码 =================
 import pandas as pd
+import streamlit as st
 
 st.set_page_config(page_title="2D 红外异常数据排查", page_icon="📋", layout="centered")
 
